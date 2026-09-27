@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090e">
+  <meta name="description" content="Piirrä liikkeelläsi valoa. Kameraa seuraava visuaalinen soitin ja videotallennus.">
+  <title>Aelith · Motion Studio</title>
+  <link rel="icon" href="./mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Aelith Motion Studio"><img src="./mark.svg" width="34" height="34" alt=""><span>AELITH<small>MOTION STUDIO</small></span></a>
+  <div class="top-note">Liikkeestä valoa.</div>
+  <span class="local-tag">Kuva pysyy laitteellasi</span>
+</header>
+<main class="workspace">
+  <section class="performance" aria-label="Esiintymispinta">
+    <div class="stage-heading"><div><span class="eyebrow">01 / LIVE CANVAS</span><h1>Sinä olet liike.</h1></div><span id="fps" class="mono">— FPS</span></div>
+    <div class="stage" id="stage">
+      <canvas id="scene" width="1280" height="720" aria-label="Eleiden piirtämät valoefektit. Kokeilutilassa voit piirtää hiirellä tai kosketuksella."></canvas>
+      <div class="stage-top"><span id="modeBadge" class="badge">KOKEILUTILA</span><span id="handStatus" class="badge subdued">Liikuta osoitinta</span></div>
+      <div class="demo-caption" id="demoCaption"><span>VALO SEURAA SINUA</span><p>Liikuta osoitinta. Paina ja vapauta.<br>Avaa kamera, kun haluat käyttää käsiäsi.</p></div>
+      <div class="stage-bottom"><span id="gestureReadout">ESIKATSELU · EI KAMERAKUVAA</span><button id="fullscreen" class="icon-button" aria-label="Koko näyttö" title="Koko näyttö">⛶</button></div>
+      <button id="exitFilm" class="exit-film" hidden>Poistu esitystilasta</button>
+    </div>
+    <div class="transport">
+      <button id="camera" class="button primary"><span aria-hidden="true">◉</span> Avaa kamera</button>
+      <button id="record" class="button record" disabled><span class="record-dot"></span> Tallenna video</button>
+      <span id="timer" class="mono" hidden>00:00</span>
+      <button id="film" class="button quiet">Esitystila</button>
+      <a id="download" class="button download" hidden>Lataa video</a>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite">Kokeile ensin valoa. Kamera käynnistyy vain painikkeesta.</p>
+    <div class="gesture-guide">
+      <article><span class="gesture-icon" aria-hidden="true">✧</span><div><h2>Sormenpäät</h2><p>Piirrä hehkuvia valojälkiä.</p></div></article>
+      <article><span class="gesture-icon" aria-hidden="true">◎</span><div><h2>Avaa & sulje</h2><p>Kerää energiaa nyrkkiin. Avaa ja vapauta.</p></div></article>
+      <article><span class="gesture-icon" aria-hidden="true">⋈</span><div><h2>Nipistä & vedä</h2><p>Peukalo + etusormi luovat valokehän.</p></div></article>
+    </div>
+    <p class="footnote">Kädet kokonaan kuvaan · valoa kasvojen suunnasta · aloita noin metrin päästä kamerasta</p>
+  </section>
+  <aside class="controls" aria-label="Efektien asetukset">
+    <div class="panel-title"><span class="eyebrow">02 / EFFECT ENGINE</span><span class="version">01</span></div>
+    <fieldset class="palette"><legend>Valon sävy</legend>
+      <label class="palette-option"><input type="radio" name="palette" value="aurora" checked><span class="swatches aurora"></span><span>Aurora<small>Syaani / fuksia</small></span><span class="choice-mark">↗</span></label>
+      <label class="palette-option"><input type="radio" name="palette" value="laurel"><span class="swatches laurel"></span><span>Laurel<small>Violetti / kulta</small></span><span class="choice-mark">↗</span></label>
+      <label class="palette-option"><input type="radio" name="palette" value="ember"><span class="swatches ember"></span><span>Ember<small>Kupari / rubiini</small></span><span class="choice-mark">↗</span></label>
+    </fieldset>
+    <div class="control-group"><label for="effect">Efekti</label><select id="effect"><option value="ribbons">Säikeet</option><option value="sigils">Sigillit</option><option value="prism">Prisma</option><option value="cyber">Kyber · Reality HUD</option></select></div>
+    <div class="slider-group"><label for="glow">Hehku <output id="glowValue">70%</output></label><input id="glow" type="range" min="0" max="100" value="70"></div>
+    <div class="slider-group"><label for="trails">Jäljen pituus <output id="trailsValue">65%</output></label><input id="trails" type="range" min="0" max="100" value="65"></div>
+    <div class="slider-group"><label for="intensity">Voimakkuus <output id="intensityValue">70%</output></label><input id="intensity" type="range" min="10" max="100" value="70"></div>
+    <div class="slider-group"><label for="cameraMix">Kameran näkyvyys <output id="cameraMixValue">85%</output></label><input id="cameraMix" type="range" min="0" max="100" value="85"></div>
+    <div class="divider"></div>
+    <label class="toggle"><span>Peilikuva</span><input id="mirror" type="checkbox" checked><span class="toggle-track"></span></label>
+    <label class="toggle"><span>Käsien ääriviivat</span><input id="skeleton" type="checkbox"><span class="toggle-track"></span></label>
+    <label class="toggle"><span>Äänireaktio<small>Mikrofoni kuuluu myös tallenteeseen</small></span><input id="audio" type="checkbox"><span class="toggle-track"></span></label>
+    <div class="audio-meter" aria-hidden="true"><div id="audioLevel"></div></div>
+    <div class="control-group"><label for="aspect">Kuvasuhde</label><select id="aspect"><option value="wide">16:9 · Vaaka</option><option value="square">1:1 · Neliö</option><option value="portrait">4:5 · Leveä kuva + tausta</option></select></div>
+    <div class="control-group"><label for="resolution">Videon koko</label><select id="resolution"><option id="size720" value="720">HD · 1280 × 720</option><option id="size1080" value="1080">Full HD · 1920 × 1080</option></select></div>
+    <div class="control-group" id="cameraSelectGroup" hidden><label for="cameraSelect">Kamera</label><select id="cameraSelect"></select></div>
+    <button id="clear" class="button clear">Tyhjennä valojäljet</button>
+    <p class="panel-note">Video tallentaa kuvan ja efektit ilman käyttöliittymää. Ääni tallentuu vain, kun äänireaktio on päällä. Pidä välilehti näkyvissä tallennuksen ajan.</p>
+  </aside>
+</main>
+<video id="cameraVideo" autoplay muted playsinline hidden></video>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
