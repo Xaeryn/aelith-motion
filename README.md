@@ -1,12 +1,12 @@
 # Aelith · Motion Studio
 
-**Turn hand gestures into light trails, sigils, and cybernetic visuals — directly in your browser.**
+**Aelith turns hand gestures into light trails, sigils, and cybernetic visuals directly in your browser.**
 
-Aelith is a camera-based visual instrument for music performances and short videos. Open a hand to release a field of light, pinch and drag to pull visual elements through space, or use both hands to shape a connected effect.
+Aelith is a camera-based visual instrument that draws visual effects on screen real time. It's meant for music performances and general short video entertainment. Open a hand to release a field of light, pinch and drag to pull visual elements through space, or use both hands to shape a connected effect.
 
 ## Why I built it
 
-I wanted to sing along to my own music and use movement to make it look as though I were creating the visuals in the air. That became Aelith: an experiment in combining live performance, computer vision, and a visual language somewhere between magic and code.
+I wanted to sing along to my own music and use movement to make it look as though I were creating the music as visuals in the air. That became an experiment in combining live performance, computer vision, and a visual language.
 
 ## What it does
 
@@ -22,9 +22,9 @@ I wanted to sing along to my own music and use movement to make it look as thoug
 
 I developed the concept, visual direction, gesture interactions, and performance use case. I tested the instrument on camera and guided successive revisions of its appearance, responsiveness, and recording behavior.
 
-The implementation was built collaboratively with OpenAI's ChatGPT/Codex. This is an AI-assisted creative technology project: I directed and evaluated the experience; AI assisted with code generation, debugging, and technical implementation.
+The implementation was built collaboratively with OpenAI's ChatGPT/Codex (GPT-6 Astra). This is an AI-assisted creative technology project. I directed and evaluated the experience, and AI assisted with code generation, debugging, and technical implementation.
 
-**Created by Ida Kaukonen / Anomalyda.**
+**Created by Ida-Emilia Kaukonen / Anomalyda.**
 
 ## How it works
 
